@@ -42,8 +42,6 @@ public class VoteController {
 	}
 	
 	
-	
-	
 	//登入請求送出
 	@PostMapping(value = {"/login", "/", "/login/"})
 	public String loginPage2(HttpSession session) {
