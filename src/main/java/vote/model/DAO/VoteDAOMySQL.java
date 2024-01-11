@@ -20,7 +20,7 @@ public class VoteDAOMySQL implements VoteDAO {
 
 	@Override
 	public List<VoteObj> findAllVoteLists() {
-		String sql = "select * from VoteObj";
+		String sql = "SELECT * FROM vote.voteObj;";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(VoteObj.class));
 	}
 
