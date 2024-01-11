@@ -22,6 +22,7 @@
     </style>
 </head>
 <body>
+${voteList}
 
     <div class="vote-section">
         <h1>投票網</h1>

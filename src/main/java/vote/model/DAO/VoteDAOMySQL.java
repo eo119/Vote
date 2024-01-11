@@ -1,4 +1,4 @@
-package model.DAO;
+package vote.model.DAO;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import model.eneity.User;
-import model.eneity.VoteObj;
+import vote.model.entity.User;
+import vote.model.entity.VoteObj;
 
+
+@Repository
 public class VoteDAOMySQL implements VoteDAO {
 
 	@Autowired

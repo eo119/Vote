@@ -12,29 +12,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	
-	<!-- 定義 PropertiesFactoryBean 讀取 UTF-8 編碼的 properties 文件 -->
-	<bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	    <property name="locations">
-	        <value>/WEB-INF/resources/units.properties</value>
-	    </property>
-	    <property name="fileEncoding" value="UTF-8"/>
-	</bean>
+	<context:component-scan base-package="vote"></context:component-scan>
 	
-	<!-- 使用 PropertyPlaceholderConfigurer 引用上面的 PropertiesFactoryBean -->
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="properties" ref="appProperties"/>
-	</bean>
-	
-	<!-- 啟用 AspectJ 自動代理 -->
-    <aop:aspectj-autoproxy/>
-    
-
-     
-	<mvc:annotation-driven />
-	
-	<context:component-scan base-package="spring.mvc" />
 	
 	<!-- 配置 view 渲染器位置 -->
 	<bean id="internalResourceViewResolver"
@@ -75,7 +56,7 @@
 	<!-- c3p0 pool -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/group_buy?serverTimezone=Asia/Taipei&amp;characterEncoding=utf-8&amp;useUnicode=true" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/vote?serverTimezone=Asia/Taipei&amp;characterEncoding=utf-8&amp;useUnicode=true" />
 		<property name="user" value="project" />
 		<property name="password" value="12345678" />
 		<property name="maxConnectionAge" value="300" /> 
@@ -97,10 +78,5 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" ></property>
     </bean>
-    
-    <!-- 開啟註解驅動，對事務相關的註解進行掃描與解析 -->
-    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
-    
-    <!-- 定義攔截器 Bean -->
-    <bean id="loginInterceptor" class="spring.mvc.group_buy.interceptor.LoginInterceptor"/>
+
 </beans>

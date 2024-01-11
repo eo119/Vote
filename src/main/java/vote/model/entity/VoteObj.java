@@ -1,4 +1,4 @@
-package model.eneity;
+package vote.model.entity;
 
 public class VoteObj {
 	private Long id;

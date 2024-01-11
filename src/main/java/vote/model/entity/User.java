@@ -1,4 +1,4 @@
-package model.eneity;
+package vote.model.entity;
 
 public class User {
 	private Integer userId;

@@ -1,10 +1,10 @@
-package model.DAO;
+package vote.model.DAO;
 
 import java.util.List;
 import java.util.Optional;
 
-import model.eneity.User;
-import model.eneity.VoteObj;
+import vote.model.entity.User;
+import vote.model.entity.VoteObj;
 
 public interface VoteDAO {
 	
