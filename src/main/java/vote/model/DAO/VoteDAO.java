@@ -19,7 +19,7 @@ public interface VoteDAO {
 	 * 2.根據Id查詢投票
 	 * @return VoteObj
 	 */
-	public Optional<VoteObj> findVoteObjById(Long Id);
+	public Optional<VoteObj> findVoteObjById(Integer Id);
 	
 	/**
 	 * 3.新增一筆投票資料
@@ -29,12 +29,12 @@ public interface VoteDAO {
 	/**
 	 *4. 刪除一筆投票資料
 	 */
-	public void deleteVote(Long id);
+	public void deleteVote(Integer id);
 	
 	/**
 	 * 5.新增一筆計數
 	 */
-	public Integer updateVoteObjCountById(Long id);
+	public Integer updateVoteObjCountById(Integer id);
 	
 	
 	/**
@@ -42,5 +42,11 @@ public interface VoteDAO {
 	 * @return 使用者資料列表
 	 */
 	public List<User> findAllUsers();
+	
+	/**
+	 * 7.根據id查詢使用者
+	 * @return User
+	 */
+	public Optional<User> findUserByUserName(String userName);
 	
 }

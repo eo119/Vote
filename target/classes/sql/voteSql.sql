@@ -31,7 +31,7 @@ drop table if exists user;
 
 -- 建立 Product
 create table if not exists voteObj(
-	id Long auto_increment primary key,
+	id int auto_increment primary key,
     name varchar(50) not null,
     count Integer not null default 0
 );
@@ -41,7 +41,7 @@ alter table voteObj auto_increment = 101;
 
 -- 建立 User
 create table if not exists user(
-	userId Long auto_increment primary key,
+	userId int auto_increment primary key,
     username varchar(50) not null,
     password varchar(50) not null
 );
@@ -61,6 +61,6 @@ INSERT INTO voteObj (Id, Name, count) VALUES
 -- password已經透過AES進行加密
 -- KEY=0123456789abcdef0123456789abcdef
 INSERT INTO user (userId, username, password) VALUES
-(201, 'admin123', 'JqKLj+4Aw3DnndH0MHUQkg=='),
-(202, 'user456', 'ormIciIAHZjZjQYphMuCHQ=='),
-(203, 'user789', 'Nj8ZE1H01l0cDeX/GskzXg==';
+(201, 'admin123', 'pass123'),
+(202, 'user456', 'pass456'),
+(203, 'user789', 'pass789');

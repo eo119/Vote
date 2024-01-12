@@ -1,50 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>投票網</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .vote-section {
-            width: 45%;
-            margin-right: 10px;
-        }
-
-        .result-section {
-            width: 45%;
-            margin-left: 40px;
-        }
-    </style>
+    <title>新增項目</title>
 </head>
 <body>
+    <div>
+        <h2>目前投票品項</h2>
+         <table border="1">
+  		   <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>目前票數</th>
+                </tr>
+            </thead>
+             <tbody>
+                <c:forEach items="${voteList}" var="voteObj" >
+                    <tr>
+                        <td>${voteObj.name}</td>
+                        <td>${voteObj.count}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+            </table>
 
-<div class="vote-section">
-    <sp:form modelAttribute="Vote" method="post">
-
-        <h2>新增投票項目</h2>
-        <label for="newItem">新項目名稱：</label>
-        <sp:input path="newItemName" id="newItem" required="true"/>
-        <sp:errors path="newItemName" cssClass="error"/>
-
-        <button type="submit">新增項目</button>
-    </sp:form>
-</div>
-
-<div class="result-section">
-    <h2>目前投票結果</h2>
-    <form>
-        <p>炒飯：<span id="item1Votes">0</span> 票</p>
-        <p>炒麵：<span id="item2Votes">0</span> 票</p>
-        <p>鍋燒麵：<span id="item3Votes">0</span> 票</p>
-        <p>丼飯：<span id="item3Votes">0</span> 票</p>
-        <p>咖哩飯：<span id="item3Votes">0</span> 票</p>
-    </form>
-</div>
-
+    <div>
+        <h2>新增項目</h2>
+        <form action="admin" method="post">
+            <input type="text" name="newItem" placeholder="輸入新項目" required>
+            <input type="submit" value="新增項目">
+        </form>
+    </div>
 </body>
 </html>
+

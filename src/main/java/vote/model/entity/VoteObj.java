@@ -1,7 +1,7 @@
 package vote.model.entity;
 
 public class VoteObj {
-	private Long id;
+	private Integer id;
 	private String name;
 	private Integer count;
 	
@@ -10,7 +10,7 @@ public class VoteObj {
 	public VoteObj() {
 	}
 
-	public VoteObj(String name,Long id,Integer count) {
+	public VoteObj(String name,Integer id,Integer count) {
 		this.name = name;
 		this.id=id;
 		this.count=count;
@@ -30,7 +30,7 @@ public class VoteObj {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

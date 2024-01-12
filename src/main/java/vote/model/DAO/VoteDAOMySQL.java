@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -32,20 +33,20 @@ public class VoteDAOMySQL implements VoteDAO {
 	}
 
 	@Override
-	public Optional<VoteObj> findVoteObjById(Long id) {
+	public Optional<VoteObj> findVoteObjById(Integer id) {
 		String sql = "select * from voteobj where id = ?";
 		VoteObj voteObj = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(VoteObj.class), id);
 		return Optional.ofNullable(voteObj);
 	}
 
 	@Override
-	public void deleteVote(Long id) {
+	public void deleteVote(Integer id) {
 		String sql = "delete from voteObj where id = ?";
 		jdbcTemplate.update(sql, id);
 	}
 	
 	@Override
-	public Integer updateVoteObjCountById(Long id) {
+	public Integer updateVoteObjCountById(Integer id) {
 		VoteObj voteObj=findVoteObjById(id).get();
 		Integer newCount=voteObj.getCount()+1;
 		String sql= "update voteobj set count = ? where id = ?";
@@ -55,9 +56,24 @@ public class VoteDAOMySQL implements VoteDAO {
 
 	@Override
 	public List<User> findAllUsers() {
-		String sql = "select userId, username, password, level from user";
+		String sql = "select userId, username, password from user";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 	}
+
+	@Override
+	public Optional<User> findUserByUserName(String userName) {
+		try {
+			
+			String sql = "select userId, username, password from user where userName = ? ";
+			User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class),userName);
+			return Optional.ofNullable(user);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return Optional.empty();
+		}
+	}
+	
+	
 
 	
 
