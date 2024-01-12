@@ -30,7 +30,7 @@
     <div>
         <h2>新增項目</h2>
         <form action="admin" method="post">
-            <input type="text" name="newItem" placeholder="輸入新項目" required>
+            <input type="text" name="name" placeholder="輸入新項目" required>
             <input type="submit" value="新增項目">
         </form>
     </div>

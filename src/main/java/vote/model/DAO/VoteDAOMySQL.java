@@ -26,9 +26,9 @@ public class VoteDAOMySQL implements VoteDAO {
 	}
 
 	@Override
-	public void addVote(VoteObj voteObj) {
-		String sql = "insert into VoteObj(id, name) values(?, ?)";
-		jdbcTemplate.update(sql, voteObj.getId(), voteObj.getName());
+	public void addVote(String name) {
+		String sql = "insert into VoteObj(name) values( ? )";
+		jdbcTemplate.update(sql,  name);
 
 	}
 

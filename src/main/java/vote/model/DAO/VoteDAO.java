@@ -24,7 +24,7 @@ public interface VoteDAO {
 	/**
 	 * 3.新增一筆投票資料
 	 */
-	public void addVote(VoteObj voteObj);
+	public void addVote(String name);
 	
 	/**
 	 *4. 刪除一筆投票資料

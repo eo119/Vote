@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <title>投票網</title>
 </head>
 <body>
-    <form action="voting" method="post">
+    <form action="./voting" method="post">
         <h2>投票品項</h2>
         <table border="1">
             <thead>
@@ -23,7 +24,9 @@
                         <td>${voteObj.name}</td>
                         <td>${voteObj.count}</td>
                         <td>
-                            <button type="submit" name="votedItem">投票</button>
+                            	<a class="pure-button pure-button-primary" type="button" href="${pageContext.request.contextPath}/mvc/vote/voting/${voteObj.id}">投票</a>
+                            	
+                            
                         </td>
                     </tr>
                 </c:forEach>

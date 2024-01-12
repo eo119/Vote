@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,16 +82,21 @@ public class VoteController {
 	}
 	
 	//投票送出
-	@PostMapping("/voting/update")
-	public String Votingupdate(@RequestParam("id")Integer id,@RequestParam("count") Integer count,HttpSession session){
+	@GetMapping("/voting/{id}")
+	public String votingUpdate(@PathVariable("id") Integer id,HttpSession session,Model model){
 		voteDAO.updateVoteObjCountById(id);
+		List<VoteObj> voteList=voteDAO.findAllVoteLists();
+		model.addAttribute("voteList",voteList);
+		
 		return "voting";
 	}
 	
 	//新增品項送出
 	@PostMapping("/admin")
-	public String addVoting(@ModelAttribute VoteObj voteObj) {
-		voteDAO.addVote(voteObj);
+	public String addVoting(@RequestParam("name") String name,Model model) {
+		voteDAO.addVote(name);
+		List<VoteObj> voteList=voteDAO.findAllVoteLists();
+		model.addAttribute("voteList",voteList);
 		return "admin";
 	}
 	
