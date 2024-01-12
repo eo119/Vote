@@ -30,6 +30,12 @@
             </tbody>
         </table>
     </form>
+    
+     <div style="margin-top: 10px;"> 
+        <form action="logout" method="post">
+            <input type="submit" value="登出">
+        </form>
+    </div>
 </body>
 </html>
 

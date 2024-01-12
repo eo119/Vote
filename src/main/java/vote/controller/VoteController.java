@@ -88,7 +88,7 @@ public class VoteController {
 	}
 	
 	//新增品項送出
-	@PostMapping("/admin/update")
+	@PostMapping("/admin")
 	public String addVoting(@ModelAttribute VoteObj voteObj) {
 		voteDAO.addVote(voteObj);
 		return "admin";
@@ -97,6 +97,8 @@ public class VoteController {
 	//後台網址進入
 	@GetMapping("/admin")
 	public String adminPage(HttpSession session,Model model) {
+		List<VoteObj> voteList=voteDAO.findAllVoteLists();
+		model.addAttribute("voteList",voteList);
 		return "admin";
 	}
 	
