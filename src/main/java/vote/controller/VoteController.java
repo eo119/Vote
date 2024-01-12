@@ -103,9 +103,16 @@ public class VoteController {
 	//後台網址進入
 	@GetMapping("/admin")
 	public String adminPage(HttpSession session,Model model) {
+		if(session.getAttribute("user")==null) {
+			return "login";}
+		
+		else if(((User)session.getAttribute("user")).getUserId().equals(201)) {
 		List<VoteObj> voteList=voteDAO.findAllVoteLists();
 		model.addAttribute("voteList",voteList);
 		return "admin";
+		}
+		session.invalidate();
+		return "login";
 	}
 	
 		// 登出
