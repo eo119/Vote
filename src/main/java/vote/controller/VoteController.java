@@ -102,6 +102,13 @@ public class VoteController {
 		return "admin";
 	}
 	
+	// 登出
+		@GetMapping("/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/mvc/vote/login";
+		}
+	
 	
 	
 
