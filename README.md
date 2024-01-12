@@ -11,6 +11,8 @@
 7.根據id查詢使用者
 8.此網站個網址僅供擁有權限者可以進入，他人無法透過網址強行連入
 
+此網站有一個管理者帳戶admin123可進行新增投票品項，其餘帳戶只能進行投票
+
 
 資料庫的建立: CREATE SCHEMA `vote` DEFAULT CHARACTER SET utf8mb4 ;
 
