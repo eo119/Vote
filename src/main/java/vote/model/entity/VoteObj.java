@@ -49,12 +49,4 @@ public class VoteObj {
 		return "VoteObj [id=" + id + ", name=" + name + ", count=" + count + "]";
 	}
 
-	
-
-	
-
-	
-	
-	
-
 }
